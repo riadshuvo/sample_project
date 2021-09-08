@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButtonClass(
+            RouteButton(
                 onClick: (){
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) =>
@@ -52,27 +52,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: 'Counter Bloc'),
 
             SizedBox(height: 10,),
-            ElevatedButtonClass(
+            RouteButton(
                 onClick: (){},
                 title: 'Form Validation'),
 
             SizedBox(height: 10,),
-            ElevatedButtonClass(
+            RouteButton(
                 onClick: (){},
                 title: 'Counter Bloc'),
 
             SizedBox(height: 10,),
-            ElevatedButtonClass(
+            RouteButton(
                 onClick: (){},
                 title: 'Counter Bloc'),
 
             SizedBox(height: 10,),
-            ElevatedButtonClass(
+            RouteButton(
                 onClick: (){},
                 title: 'Counter Bloc'),
 
             SizedBox(height: 10,),
-            ElevatedButtonClass(
+            RouteButton(
                 onClick: (){},
                 title: 'Counter Bloc'),
 
@@ -85,18 +85,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class ElevatedButtonClass extends StatelessWidget {
-  const ElevatedButtonClass({Key? key,
+class RouteButton extends StatelessWidget {
+  const RouteButton({Key? key,
     required this.title, required this.onClick}) : super(key: key);
 
   final String title;
-  final VoidCallback onClick;
+  final Function() onClick;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: onClick,
-        child: Text(title));
+    return InkWell(
+        onTap: onClick,
+        child: Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                color: Colors.blue,
+              borderRadius: BorderRadius.circular(8)
+            ),
+            child: Text(title)));
   }
 }
 
