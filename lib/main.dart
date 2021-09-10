@@ -90,7 +90,7 @@ class RouteButton extends StatelessWidget {
     required this.title, required this.onClick}) : super(key: key);
 
   final String title;
-  final Function() onClick;
+  final GestureTapCallback onClick;
 
   @override
   Widget build(BuildContext context) {
