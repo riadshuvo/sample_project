@@ -1,12 +1,15 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sample_project/bloc_observer.dart';
-
+import 'package:equatable/equatable.dart';
 import 'counter/counter_view.dart';
+import 'form_validation/view/form_vaidation_view.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
+  EquatableConfig.stringify = kDebugMode;
   runApp(MyApp());
 }
 
@@ -53,7 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
             SizedBox(height: 10,),
             RouteButton(
-                onClick: (){},
+                onClick: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) =>
+                          FormValidationView()));
+                },
                 title: 'Form Validation'),
 
             SizedBox(height: 10,),
