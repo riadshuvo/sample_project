@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sample_project/bloc_observer.dart';
 import 'package:equatable/equatable.dart';
+import 'alphabet_scrolable_list/view/MyAlphabetList.dart';
 import 'counter/counter_view.dart';
 import 'form_validation/view/form_vaidation_view.dart';
 
@@ -65,8 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
             SizedBox(height: 10,),
             RouteButton(
-                onClick: (){},
-                title: 'Counter Bloc'),
+                onClick: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) =>
+                          MyListView()));},
+                title: 'Alphabet Scroll View'),
 
             SizedBox(height: 10,),
             RouteButton(
@@ -93,8 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class RouteButton extends StatelessWidget {
-  const RouteButton({Key? key,
+   RouteButton({Key? key,
     required this.title, required this.onClick}) : super(key: key);
+
+ final GlobalKey _key = GlobalKey();
 
   final String title;
   final GestureTapCallback onClick;
@@ -102,6 +108,7 @@ class RouteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      key: _key,
         onTap: onClick,
         child: Container(
             padding: EdgeInsets.all(10),
