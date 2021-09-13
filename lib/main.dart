@@ -7,6 +7,9 @@ import 'package:equatable/equatable.dart';
 import 'alphabet_scrolable_list/view/MyAlphabetList.dart';
 import 'counter/counter_view.dart';
 import 'form_validation/view/form_vaidation_view.dart';
+import 'logIn/authentication/authentication_repository.dart';
+import 'logIn/repository/user_repository.dart';
+import 'logIn/widgets/app_login.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
@@ -74,8 +77,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
             SizedBox(height: 10,),
             RouteButton(
-                onClick: (){},
-                title: 'Counter Bloc'),
+                onClick: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) =>
+                          AppLogin(
+                            authenticationRepository: AuthenticationRepository(),
+                            userRepository: UserRepository(),
+                          )));
+                },
+                title: 'Login Bloc'),
 
             SizedBox(height: 10,),
             RouteButton(
