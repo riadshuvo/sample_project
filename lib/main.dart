@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sample_project/bloc_observer.dart';
 import 'package:equatable/equatable.dart';
 import 'alphabet_scrolable_list/view/MyAlphabetList.dart';
+import 'az_list_view/page.dart';
 import 'counter/counter_view.dart';
 import 'form_validation/view/form_vaidation_view.dart';
 import 'logIn/authentication/authentication_repository.dart';
@@ -89,8 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
             SizedBox(height: 10,),
             RouteButton(
-                onClick: (){},
-                title: 'Counter Bloc'),
+                onClick: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) =>
+                      MainPage()));},
+                title: 'AZ List View'),
 
             SizedBox(height: 10,),
             RouteButton(
